@@ -4,19 +4,17 @@ import App from './App.jsx'
 import './index.css'
 
 import {
-  createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import router from './Components/Routes/Route.jsx';
+import AuthProvider from './Components/Providers/AuthProvider.jsx';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Hello Bangladesh ! Hello world!</div>,
-  },
-]);
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <div className=' container mx-auto'>
+      <AuthProvider><RouterProvider router={router} /></AuthProvider>
+    </div>
   </React.StrictMode>,
 )
