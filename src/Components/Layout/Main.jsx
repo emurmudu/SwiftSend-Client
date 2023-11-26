@@ -7,7 +7,7 @@ const Main = () => {
         <div>
             <Navbar></Navbar>
             {/* <div className=" min-h-screen"> */}
-            <div className=' container pt-24 min-h-[calc(100vh-68px)]'>
+            <div className=' container min-h-[calc(100vh-68px)]'>
                 <Outlet></Outlet>
 
             </div>

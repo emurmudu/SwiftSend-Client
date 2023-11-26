@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
-import { NavLink, useLoaderData } from "react-router-dom";
+import { Link, NavLink, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useAdmin from "../hooks/useAdmin";
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [profileDropdown, setProfileDropdown] = useState(false);
+    const [isAdmin] = useAdmin();
 
     const handleProfileDropdown = () => {
         setProfileDropdown(!profileDropdown);
@@ -22,30 +24,22 @@ const Navbar = () => {
             })
     }
 
-
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/allFoods'>Dashboard</NavLink></li>
+        {/* <li><NavLink to='/dashboard'>Dashboard</NavLink></li> */}
+        {
+            user && isAdmin && <li> <Link to="/dashboard/statistics">Dashboard</Link> </li>
+        }
+        {
+            user && !isAdmin && <li> <Link to="/dashboard/userHome">Dashboard</Link> </li>
+        }
         <li><NavLink to='/blog'>Notification</NavLink></li>
-        {
+        {/* {
             user &&
             <>
 
             </>
-        }
-    </>
-
-
-    const profileLinks = <>
-        <li ><NavLink to='/myAddedFoods'>User Name</NavLink></li>
-        <li ><NavLink to='/addFoodItem'>Dashboard</NavLink></li>
-        <li ><NavLink to='/myOrders'>Logout</NavLink></li>
-        {
-            user &&
-            <>
-
-            </>
-        }
+        } */}
     </>
 
 
@@ -61,10 +55,10 @@ const Navbar = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <a className=" cursor-pointer normal-case font-bold text-2xl md:text-3xl">
-                    <span className="text-yellow-700">Swift</span>
-                    <span><span className=" shadow-yellow-600">S</span>end</span>
-                </a>
+                <div className=" cursor-pointer normal-case font-bold text-2xl md:text-3xl">
+                    <span className="text-red-600">Swift<span className=" text-blue-600">Send</span></span>
+
+                </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -75,7 +69,6 @@ const Navbar = () => {
             <div className="navbar-end">
                 {user ? (
                     <>
-                        <span className="hidden lg:block font-bold p-2">{user.displayName}</span>
                         <div className="flex items-center gap-1">
                             <img
                                 onClick={handleProfileDropdown}
@@ -85,14 +78,22 @@ const Navbar = () => {
 
                             />
                             {profileDropdown && (
-                                // <ul className=" absolute w-max flex flex-col rounded-none z-10 right-28 mt-48 text-right p-4 lg:text-left">
-                                <ul tabIndex={0} className="absolute z-10 right-12 xl:right-36 md:right-12 lg:right-14 mt-40 menu menu-sm dropdown-content  p-2 shadow bg-base-100 rounded ">
-                                    {profileLinks}
+                                <ul tabIndex={0} className="absolute flex items-end z-10 right-2 md:right-2 xl:right-20 sm:right-8 mt-40 menu menu-sm dropdown-content p-2 shadow bg-base-100 rounded ">
+                                    <li className="font-bold p-2">{user.displayName}</li>
+
+                                    {
+                                        user && isAdmin && <li> <Link to="/dashboard/statistics">Dashboard</Link> </li>
+                                    }
+                                    {
+                                        user && !isAdmin && <li> <Link to="/dashboard/userHome">Dashboard</Link> </li>
+                                    }
+                                    {
+                                        !user && !isAdmin && <li> <Link to="/dashboard/deliveryManHome">Dashboard</Link> </li>
+                                    }
+                                    <li onClick={handleLogOut}><a>Logout</a></li>
+
                                 </ul>
                             )}
-                            <a onClick={handleLogOut} className="btn btn-sm font-bold dark:text-white dark:bg-zinc-700">
-                                Logout
-                            </a>
                         </div>
                     </>
                 ) : (

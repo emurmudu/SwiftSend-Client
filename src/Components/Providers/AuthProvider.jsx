@@ -11,12 +11,6 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [loggedInUserEmail, setLoggedInUserEmail] = useState(null);
 
-    // const createUser = (email, password) => {
-    //     setLoading(true);
-    //     return createUserWithEmailAndPassword(auth, email, password)
-    // }
-
-
 
     const createUser = (email, password, displayName, photoURL) => {
         setLoading(true);
@@ -43,37 +37,6 @@ const AuthProvider = ({ children }) => {
                 throw error;
             });
     };
-
-
-
-
-
-
-    // const createUser = async (email, password, additionalData) => {
-    //     // eslint-disable-next-line no-useless-catch
-    //     try {
-    //         const result = await createUserWithEmailAndPassword(auth, email, password);
-    //         const user = result.user;
-
-    //         // Additional code to store user data in MongoDB
-    //         await fetch('http://localhost:5000/register', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({
-    //                 email,
-    //                 password,
-    //                 name: additionalData.name,
-    //                 photoURL: additionalData.photoURL,
-    //             }),
-    //         });
-
-    //         return user;
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // };
 
 
     const logInWithUser = (email, password) => {

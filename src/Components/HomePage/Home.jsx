@@ -1,8 +1,16 @@
+import AppUsage from "./AppUsage";
+import Banner from "./Banner";
+import Features from "./Features";
+import OurFeatures from "./OurFeatures";
+import TopDeliveryMan from "./TopDeliveryMan";
 
 const Home = () => {
     return (
         <div>
-            <h1>This is Home page</h1>
+            <Banner></Banner>
+            <OurFeatures></OurFeatures>
+            <AppUsage></AppUsage>
+            <TopDeliveryMan></TopDeliveryMan>
         </div>
     );
 };
