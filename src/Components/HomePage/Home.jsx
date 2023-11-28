@@ -7,8 +7,8 @@ import TopDeliveryMan from "./TopDeliveryMan";
 const Home = () => {
     return (
         <div>
-            <Banner></Banner>
-            <OurFeatures></OurFeatures>
+            <Banner id="home" />
+            <OurFeatures id="features" />
             <AppUsage></AppUsage>
             <TopDeliveryMan></TopDeliveryMan>
         </div>

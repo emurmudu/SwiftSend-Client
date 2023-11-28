@@ -21,6 +21,7 @@ import AllDevliMan from "../Dashboard/AdminDash/AllDevliMan";
 import AllParcels from "../Dashboard/AdminDash/AllParcels";
 import ManageParcel from "../Dashboard/AdminDash/ManageParcel";
 import Statistics from "../Dashboard/AdminDash/Statistics";
+import OurFeatures from "../HomePage/OurFeatures";
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Register></Register>
+            },
+            {
+                path: 'ourFeature',
+                element: <OurFeatures></OurFeatures>
             },
         ]
     },

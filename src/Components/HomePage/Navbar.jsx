@@ -4,12 +4,17 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAdmin from "../hooks/useAdmin";
+import { FaBell } from "react-icons/fa";
+import useDeliveryMan from "../hooks/useDeliveryMan";
+
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [profileDropdown, setProfileDropdown] = useState(false);
     const [isAdmin] = useAdmin();
+    const [isDeliveryMan] = useDeliveryMan();
+
 
     const handleProfileDropdown = () => {
         setProfileDropdown(!profileDropdown);
@@ -27,25 +32,21 @@ const Navbar = () => {
     const navLinks = <>
         <li><NavLink to='/'>Home</NavLink></li>
         {/* <li><NavLink to='/dashboard'>Dashboard</NavLink></li> */}
-        {
-            user && isAdmin && <li> <Link to="/dashboard/statistics">Dashboard</Link> </li>
-        }
-        {
-            user && !isAdmin && <li> <Link to="/dashboard/userHome">Dashboard</Link> </li>
-        }
-        <li><NavLink to='/blog'>Notification</NavLink></li>
-        {/* {
-            user &&
-            <>
-
-            </>
-        } */}
+        {user && isAdmin && <li><Link to="/dashboard/statistics">Dashboard</Link></li>}
+        {user && isDeliveryMan && <li><Link to="/dashboard/deliveryManHome">Dashboard</Link></li>}
+        {user && !isAdmin && !isDeliveryMan && <li><Link to="/dashboard/userHome">Dashboard</Link></li>}
+        <li>
+            <a href="#">Features</a>
+        </li>
+        <li><NavLink to="/dashboard/statistics">
+            <button className=" flex items-center">
+                <FaBell className=" mr-2 text-xl"></FaBell>
+            </button>
+        </NavLink></li>
     </>
 
-
-
     return (
-        <div className="navbar shadow-md bg-base-100">
+        <div className="navbar shadow-md bg-red-300">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -81,15 +82,12 @@ const Navbar = () => {
                                 <ul tabIndex={0} className="absolute flex items-end z-10 right-2 md:right-2 xl:right-20 sm:right-8 mt-40 menu menu-sm dropdown-content p-2 shadow bg-base-100 rounded ">
                                     <li className="font-bold p-2">{user.displayName}</li>
 
-                                    {
-                                        user && isAdmin && <li> <Link to="/dashboard/statistics">Dashboard</Link> </li>
-                                    }
-                                    {
-                                        user && !isAdmin && <li> <Link to="/dashboard/userHome">Dashboard</Link> </li>
-                                    }
-                                    {
+                                    {user && isAdmin && <li><Link to="/dashboard/statistics">Dashboard</Link></li>}
+                                    {user && isDeliveryMan && <li><Link to="/dashboard/deliveryManHome">Dashboard</Link></li>}
+                                    {user && !isAdmin && !isDeliveryMan && <li><Link to="/dashboard/userHome">Dashboard</Link></li>}
+                                    {/* {
                                         !user && !isAdmin && <li> <Link to="/dashboard/deliveryManHome">Dashboard</Link> </li>
-                                    }
+                                    } */}
                                     <li onClick={handleLogOut}><a>Logout</a></li>
 
                                 </ul>

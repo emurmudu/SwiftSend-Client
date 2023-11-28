@@ -3,20 +3,19 @@ import { AuthContext } from "../Providers/AuthProvider";
 import useAxiosSecure from "./useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
-const useAdmin = () => {
+const useDeliveryMan = () => {
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
-    const { data: isAdmin } = useQuery({
-        queryKey: [user?.email, 'isAdmin'],
+    const { data: isDeliveryMan } = useQuery({
+        queryKey: [user?.email, 'isDeliveryMan'],
         // enabled: !loading,
         queryFn: async () => {
-            // console.log('asking or checking is admin', user);
-            const res = await axiosSecure.get(`/user/admin/${user.email}`);
+            // console.log('asking or checking is deliveryMan', user);
+            const res = await axiosSecure.get(`/user/deliveryMan/${user.email}`);
             console.log(res.data);
-            return res.data?.admin;
+            return res.data?.deliveryMan;
         }
     })
-    return [isAdmin]
+    return [isDeliveryMan]
 };
-
-export default useAdmin;
+export default useDeliveryMan;

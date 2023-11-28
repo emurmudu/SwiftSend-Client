@@ -5,10 +5,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../Providers/AuthProvider";
+import SocialLogin from "./SocialLogin";
 
 const Login = () => {
     const navigate = useNavigate();
-    const { logInWithUser, logInWithGoogle } = useContext(AuthContext);
+    const { logInWithUser } = useContext(AuthContext);
     const [userError, setUserError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
 
@@ -32,16 +33,6 @@ const Login = () => {
         } catch (error) {
             console.error(error);
             setUserError(error.message);
-        }
-    };
-
-    const handleGoogleLogIn = async () => {
-        try {
-            const result = await logInWithGoogle();
-            console.log(result.user);
-            navigate("/");
-        } catch (error) {
-            console.error(error);
         }
     };
 
@@ -83,7 +74,8 @@ const Login = () => {
                         {userError && <p className="text-red-600 mt-2">{userError}</p>}
                     </div>
                     <p>Not have an account? <NavLink className="font-bold" to="/register">Register</NavLink></p>
-                    <p>Login with <button onClick={handleGoogleLogIn} className="font-bold">Google</button></p>
+                    {/* <p>Login with <button onClick={handleGoogleLogIn} className="font-bold">Google</button></p> */}
+                    <SocialLogin></SocialLogin>
                 </form>
             </div>
             <ToastContainer />

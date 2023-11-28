@@ -45,7 +45,7 @@ const Banner = () => {
                             backgroundImage: `url('${imageUrl}')`,
                         }}
                     ></div>
-                    <div className="absolute inset-0 bottom-64 flex flex-col justify-center items-center space-y-4 text-white">
+                    <div className="absolute inset-0 bottom-40 flex flex-col justify-center items-center space-y-4 text-white">
                         <h1
                             data-aos="fade-up"
                             data-aos-duration="1200"

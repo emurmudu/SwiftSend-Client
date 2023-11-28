@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import CountUp from "react-countup";
 import SubHeading from "../Shared/SubHeading";
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+import 'aos/dist/aos.css';
+import { FaAd, FaBookOpen, FaBox, FaBoxOpen, FaBoxes, FaChartBar, FaEdit, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUser, FaUserSecret, FaUsers, FaUtensils } from "react-icons/fa";
 
 const AppUsage = () => {
     useEffect(() => {
         AOS.init({
-            duration: 1200,
+            duration: 1000,
             offset: 200,
             easing: 'ease-in-out',
         });
@@ -20,7 +21,7 @@ const AppUsage = () => {
     ];
 
     return (
-        <div data-aos="flip-left" data-aos-anchor-placement="top-center" className="text-center mb-24">
+        <div data-aos="flip-left" data-aos-anchor-placement="top-center" className="mb-24 text-center">
             <SubHeading
                 subHeading={"Service Providing"}
                 heading={"Usage Statistics"}>
