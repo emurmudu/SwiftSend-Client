@@ -52,7 +52,7 @@ const ParcelBooking = () => {
             longitude,
             price: calculatedPrice,
             status: 'pending',
-            booking_date: Date(),
+            booking_date: new Date().toLocaleDateString('en-GB'),
 
         }
 
