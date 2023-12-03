@@ -47,12 +47,13 @@ const ParcelBooking = () => {
             receiver_name,
             receiver_phone,
             delivery_address,
-            requested_delivery_date,
+            requested_delivery_date: new Date().toLocaleDateString('en-GB'),
             latitude,
             longitude,
             price: calculatedPrice,
             status: 'pending',
             booking_date: new Date().toLocaleDateString('en-GB'),
+            // booking_date: new Date().toLocaleDateString('en-GB'),
 
         }
 
@@ -141,7 +142,7 @@ const ParcelBooking = () => {
                         <label className="label">
                             <span className="label-text">Receiver's Phone</span>
                         </label>
-                        <input type="tel" name="receiver_phone" placeholder="Receiver Name" className="input input-bordered" required />
+                        <input type="tel" name="receiver_phone" placeholder="Receiver Phone" className="input input-bordered" required />
                     </div>
 
                     <div className="form-control">

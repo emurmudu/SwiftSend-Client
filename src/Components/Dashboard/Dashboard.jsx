@@ -55,11 +55,14 @@ const Dashboard = () => {
 
                                 <li> <NavLink to='/dashboard/myDeliveryList'>
                                     <FaBox></FaBox>
-                                    My Parcels</NavLink></li>
+                                    Delivery List</NavLink></li>
+                                {/* <li> <NavLink to='/dashboard/deliveries'>
+                                    <FaBox></FaBox>
+                                    Delivery List</NavLink></li> */}
 
                                 <li> <NavLink to='/dashboard/myReviews'>
                                     <FaBoxesPacking></FaBoxesPacking>
-                                    Parcel Booking </NavLink></li>
+                                    Users Reviews </NavLink></li>
                             </>)
                                 : (
                                     //User dashboard
@@ -71,14 +74,17 @@ const Dashboard = () => {
                                         <li> <NavLink to='/dashboard/myParcels'>
                                             <FaBox></FaBox>
                                             My Parcels</NavLink></li>
+                                        {/* <li> <NavLink to='/dashboard/deliveries'>
+                                            <FaBox></FaBox>
+                                            My Parcels</NavLink></li> */}
 
                                         <li> <NavLink to='/dashboard/parcelBooking'>
                                             <FaBoxesPacking></FaBoxesPacking>
                                             Parcel Booking </NavLink></li>
 
-                                        <li> <NavLink to='/dashboard/updateBooking'>
+                                        {/* <li> <NavLink to='/dashboard/updateBooking'>
                                             <FaBoxOpen></FaBoxOpen>
-                                            Update Booking</NavLink></li>
+                                            Update Booking</NavLink></li> */}
 
                                         <li> <NavLink to='/dashboard/paySuccess'>
                                             <FaDollarSign></FaDollarSign>

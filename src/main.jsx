@@ -11,10 +11,10 @@ import AuthProvider from './Components/Providers/AuthProvider.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { HelmetProvider } from 'react-helmet-async';
 
-import Modal from "react-modal";
+// import Modal from "react-modal";
 
-// Set the root element for the modal
-Modal.setAppElement("#root");
+// // Set the root element for the modal
+// Modal.setAppElement("#root");
 
 const queryClient = new QueryClient()
 

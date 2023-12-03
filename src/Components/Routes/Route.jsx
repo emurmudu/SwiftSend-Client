@@ -22,6 +22,7 @@ import AllParcels from "../Dashboard/AdminDash/AllParcels";
 import ManageParcel from "../Dashboard/AdminDash/ManageParcel";
 import Statistics from "../Dashboard/AdminDash/Statistics";
 import OurFeatures from "../HomePage/OurFeatures";
+import Deliveries from "../Dashboard/DeliveryManDash/Deliveries";
 
 const router = createBrowserRouter([
     {
@@ -79,9 +80,11 @@ const router = createBrowserRouter([
                 element: <PaySuccess></PaySuccess>
             },
             {
-                path: 'updateBooking',
-                element: <UpdateBooking></UpdateBooking>
+                path: 'updateBooking/:id',
+                element: <UpdateBooking></UpdateBooking>,
+                loader: ({ params }) => fetch(`http://localhost:5001/updateBooking/${params.id}`)
             },
+
 
             //Delivery man related routes
             {
@@ -99,6 +102,10 @@ const router = createBrowserRouter([
             {
                 path: 'myReviews',
                 element: <MyReviews></MyReviews>
+            },
+            {
+                path: 'deliveries',
+                element: <Deliveries></Deliveries>
             },
 
 

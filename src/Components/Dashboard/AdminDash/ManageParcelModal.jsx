@@ -8,7 +8,6 @@ const ManageParcelModal = ({ isOpen, onClose, parcel }) => {
     const [approximateDeliveryDate, setApproximateDeliveryDate] = useState('');
 
     useEffect(() => {
-        // Fetch delivery men from the database when the modal opens
         const fetchDeliveryMen = async () => {
             try {
                 const response = await axiosSecure.get('/deliveryMen');
@@ -25,7 +24,7 @@ const ManageParcelModal = ({ isOpen, onClose, parcel }) => {
 
     const handleAssign = async () => {
         try {
-            // Update the parcel information in the database
+
             const response = await axiosSecure.put(`/bookedParcels/${parcel._id}`, {
                 status: 'On The Way',
                 deliveryMenId: selectedDeliveryMan,
@@ -33,21 +32,19 @@ const ManageParcelModal = ({ isOpen, onClose, parcel }) => {
             });
 
             if (response.data.success) {
-                // After updating the parcel, close the modal
+
                 onClose();
             } else {
                 console.error('Failed to update parcel:', response.data.message);
-                // Handle the error as needed
+
             }
         } catch (error) {
             console.error('Error updating parcel:', error);
-            // Handle the error as needed
         }
     };
 
     return (
         <div>
-            {/* Implement your modal UI here */}
             {isOpen && (
                 <div>
                     <h2>Manage Parcel</h2>
