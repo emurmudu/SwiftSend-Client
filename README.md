@@ -3,6 +3,8 @@ Live website link :https://assignment-12-client-f25b1.web.app
 
 * Assignment Category: assignment12_category_0015
 
+* Project Name: Parcel Management App- A online parcel delivery platform
+
 ## Project features : ##
 
 * About Project :
