@@ -62,7 +62,7 @@ const UpdateBooking = () => {
 
         console.log(updatedParcels)
 
-        fetch(`http://localhost:5001/updateBooking/${_id}`, {
+        fetch(`https://assignment-12-server-c6usoj9ec-elias-murmus-projects.vercel.app/updateBooking/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

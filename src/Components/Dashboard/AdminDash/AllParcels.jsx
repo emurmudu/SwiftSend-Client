@@ -87,7 +87,7 @@ const AllParcels = () => {
     useEffect(() => {
         const fetchDeliveryMen = async () => {
             try {
-                const res = await axiosSecure.get("http://localhost:5001/deliveryMen");
+                const res = await axiosSecure.get("https://assignment-12-server-c6usoj9ec-elias-murmus-projects.vercel.app/deliveryMen");
                 setDeliveryMen(res.data);
             } catch (error) {
                 console.error("Error fetching delivery men:", error);
