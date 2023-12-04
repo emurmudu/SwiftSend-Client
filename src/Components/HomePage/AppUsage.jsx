@@ -1,11 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import SubHeading from "../Shared/SubHeading";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaAd, FaBookOpen, FaBox, FaBoxOpen, FaBoxes, FaChartBar, FaEdit, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUser, FaUserSecret, FaUsers, FaUtensils } from "react-icons/fa";
+import { useLoaderData } from "react-router-dom";
 
 const AppUsage = () => {
+    const [users, setUsers] = useState([]);
+    const [bookings, setBookings] = useState([]);
+    console.log(users.length);
+
     useEffect(() => {
         AOS.init({
             duration: 1000,
@@ -14,30 +19,41 @@ const AppUsage = () => {
         });
     }, []);
 
-    const statisticsData = [
-        { title: "Number of Parcel Booked", count: 1200, icon: "📦" },
-        { title: "Number of Parcel Delivered", count: 800, icon: "🚚" },
-        { title: "Number of Users", count: 5000, icon: "👥" },
-    ];
+    useEffect(() => {
+        fetch('http://localhost:5001/users')
+            .then(res => res.json())
+            .then(data => setUsers(data))
+    }, [])
+    useEffect(() => {
+        fetch('http://localhost:5001/bookedParcels')
+            .then(res => res.json())
+            .then(data => setBookings(data))
+    }, [])
+
+
 
     return (
-        <div data-aos="flip-left" data-aos-anchor-placement="top-center" className="mb-24 text-center">
-            <SubHeading
-                subHeading={"Service Providing"}
-                heading={"Usage Statistics"}>
-            </SubHeading>
-            <div className="flex flex-wrap justify-center">
-                {statisticsData.map((statistic, index) => (
-                    <div key={index} className="max-w-sm rounded overflow-hidden shadow-lg m-4" data-aos="fade-up">
-                        <div className="p-4">
-                            <div className="text-4xl mb-4">{statistic.icon}</div>
-                            <h3 className="text-xl font-semibold mb-2">{statistic.title}</h3>
-                            <p className="text-gray-700">
-                                <CountUp end={statistic.count} duration={2} separator="," />
-                            </p>
-                        </div>
-                    </div>
-                ))}
+        <div className=" text-center">
+            <SubHeading subHeading={'Our App Highlight'} heading={'Usage Information'}></SubHeading>
+            <div data-aos="flip-left" data-aos-anchor-placement="top-center" className="stats w-5/6 mx-auto shadow mb-24 flex items-center text-center">
+                <div className="stat place-items-center">
+                    <div className="stat-title">Number of Parcel Booked</div>
+                    <div className="stat-value">{bookings.length}</div>
+                    <div className="stat-desc">From January 1st to February 1st</div>
+                </div>
+
+                <div className="stat place-items-center">
+                    <div className="stat-title">Number of Registered Users</div>
+                    <div className="stat-value text-secondary">{users.length}</div>
+                    <div className="stat-desc text-secondary">↗︎ 40 (2%)</div>
+                </div>
+
+                <div className="stat place-items-center">
+                    <div className="stat-title">Number of Parcel Delivered</div>
+                    <div className="stat-value">1,200</div>
+                    <div className="stat-desc">↘︎ 90 (14%)</div>
+                </div>
+
             </div>
         </div>
     );

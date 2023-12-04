@@ -23,11 +23,15 @@ import ManageParcel from "../Dashboard/AdminDash/ManageParcel";
 import Statistics from "../Dashboard/AdminDash/Statistics";
 import OurFeatures from "../HomePage/OurFeatures";
 import Deliveries from "../Dashboard/DeliveryManDash/Deliveries";
+import ErrorPage from "../HomePage/ErrorPage";
+import AppUsage from "../HomePage/AppUsage";
+// import ErrorPage from "../HomePage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -45,12 +49,18 @@ const router = createBrowserRouter([
                 path: 'ourFeature',
                 element: <OurFeatures></OurFeatures>
             },
+            {
+                path: 'ourFeature',
+                element: <AppUsage></AppUsage>,
+            },
+
         ]
     },
 
     {
         path: 'dashboard',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
 
             // Users related routes
@@ -66,6 +76,8 @@ const router = createBrowserRouter([
             {
                 path: 'myProfile',
                 element: <MyProfile></MyProfile>
+
+
             },
             {
                 path: 'myParcels',

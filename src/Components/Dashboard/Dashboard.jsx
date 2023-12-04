@@ -39,9 +39,9 @@ const Dashboard = () => {
                                     <FaBoxes></FaBoxes>
                                     All Parcels</NavLink></li>
 
-                                <li> <NavLink to='/dashboard/manageParcel'>
+                                {/* <li> <NavLink to='/dashboard/manageParcel'>
                                     <FaBoxesStacked></FaBoxesStacked>
-                                    Manage Parcel</NavLink></li>
+                                    Manage Parcel</NavLink></li> */}
                                 <li> <NavLink to='/dashboard/statistics'>
                                     <FaChartBar></FaChartBar>
                                     Statistics</NavLink></li>

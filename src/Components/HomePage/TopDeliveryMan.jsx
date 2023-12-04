@@ -5,31 +5,31 @@ import 'aos/dist/aos.css';
 
 const deliveryMenData = [
     {
-        name: 'Elias Murmu',
+        name: 'Delivery Man 1',
         image: 'https://i.ibb.co/PMX06RF/3.jpg',
         parcelsDelivered: 86,
         averageRating: 5,
     },
     {
-        name: 'Elias Murmu',
+        name: 'Delivery Man 2',
         image: 'https://i.ibb.co/RhkW525/boy2.jpg',
         parcelsDelivered: 86,
         averageRating: 5,
     },
     {
-        name: 'Elias Murmu',
+        name: 'Delivery Man 3',
         image: 'https://i.ibb.co/RhkW525/boy2.jpg',
         parcelsDelivered: 86,
         averageRating: 5,
     },
     {
-        name: 'Elias Murmu',
+        name: 'Delivery Man 4',
         image: 'https://i.ibb.co/RhkW525/boy2.jpg',
         parcelsDelivered: 86,
         averageRating: 5,
     },
     {
-        name: 'Elias Murmu',
+        name: 'Delivery Man 5',
         image: 'https://i.ibb.co/RhkW525/boy2.jpg',
         parcelsDelivered: 86,
         averageRating: 5,

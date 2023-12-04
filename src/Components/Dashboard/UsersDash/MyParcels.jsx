@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
@@ -12,7 +12,7 @@ const MyParcels = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const { user } = useContext(AuthContext);
     const pageSize = 5;
-
+    const queryClient = useQueryClient();
     const { data: parcels = [] } = useQuery({
         queryKey: ['bookedParcels', user?.email, currentPage],
         queryFn: async () => {
@@ -20,6 +20,29 @@ const MyParcels = () => {
             return res.data;
         }
     })
+
+
+
+    const handleCancel = async (parcelId, status) => {
+        if (status === 'pending') {
+            const confirmed = window.confirm('Are you sure you want to cancel this booking?');
+            if (confirmed) {
+                try {
+                    // Call the backend to cancel the parcel
+                    await axiosPublic.put(`/statusCancel/${parcelId}`, { status: 'cancel', userConfirmed: true });
+                    // Invalidate and refetch the query after successful cancellation
+                    queryClient.invalidateQueries('statusCancel');
+                } catch (error) {
+                    console.error('Error canceling parcel:', error);
+                    // Handle error, show a notification, etc.
+                }
+            }
+        } else {
+            alert("You can only cancel bookings with 'pending' status.");
+        }
+    };
+
+
 
 
     return (
@@ -64,7 +87,7 @@ const MyParcels = () => {
                                     </Link>
                                 </th>
                                 <th>
-                                    {<button onClick={() => handleManage(parcel)} className="btn hover:bg-orange-600 bg-orange-400 btn-sm">
+                                    {<button onClick={() => handleCancel(parcel._id, parcel.status)} className="btn hover:bg-orange-600 bg-orange-400 btn-sm">
                                         Cancel
                                     </button>}
                                 </th>

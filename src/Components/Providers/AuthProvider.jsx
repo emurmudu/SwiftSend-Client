@@ -65,6 +65,38 @@ const AuthProvider = ({ children }) => {
     }
 
 
+
+    const updateUserProfile = async (userId, newPhotoURL) => {
+        try {
+            const user = auth.currentUser;
+            if (user) {
+                await updateProfile(user, {
+                    photoURL: newPhotoURL,
+                });
+
+                // Update the profile picture in the local state
+                setUser({
+                    ...user,
+                    photoURL: newPhotoURL,
+                });
+
+                // Optionally, update the profile picture in your backend
+                // You can make an API call here to update the profile picture in your database
+
+                return true; // Return true to indicate success
+            } else {
+                console.error('No user is currently logged in.');
+                return false; // Return false to indicate failure
+            }
+        } catch (error) {
+            console.error('Error updating user profile:', error);
+            return false; // Return false to indicate failure
+        }
+    };
+
+
+
+
     // useEffect(() => {
     //     const unSubscribe = onAuthStateChanged(auth, currentUser => {
     //         const userEmail = currentUser?.email || user?.email;
@@ -180,7 +212,7 @@ const AuthProvider = ({ children }) => {
 
 
 
-    const authInfo = { user, createUser, logInWithUser, logInWithGoogle, loading, logOut, loggedInUserEmail }
+    const authInfo = { user, createUser, logInWithUser, logInWithGoogle, loading, logOut, loggedInUserEmail, updateUserProfile }
 
 
     return (
