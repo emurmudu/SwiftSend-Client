@@ -10,7 +10,7 @@ const MyDelivList = () => {
         const fetchParcels = async () => {
             try {
                 if (user) {
-                    const response = await axios.get(`http://localhost:5001/api/bookedParcels?deliveryMenId=${user._id}`);
+                    const response = await axios.get(`http://localhost:5000/api/bookedParcels?deliveryMenId=${user._id}`);
                     setParcels(response.data);
                 }
             } catch (error) {

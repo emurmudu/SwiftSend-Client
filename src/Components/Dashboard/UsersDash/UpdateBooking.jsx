@@ -62,7 +62,7 @@ const UpdateBooking = () => {
 
         console.log(updatedParcels)
 
-        fetch(`http://localhost:5001/updateBooking/${_id}`, {
+        fetch(`http://localhost:5000/updateBooking/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

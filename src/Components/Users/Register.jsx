@@ -56,7 +56,7 @@ const Register = () => {
             // Additional fetch request here
 
             const userData = { name, email, password, photoURL };
-            fetch('http://localhost:5001/user', {
+            fetch('http://localhost:5000/user', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

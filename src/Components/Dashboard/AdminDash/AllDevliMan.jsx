@@ -10,7 +10,7 @@ const AllDevliMan = () => {
         // Fetch delivery men data from an API endpoint
         const fetchData = async () => {
             try {
-                const response = await axiosSecure.get('http://localhost:5001/deliveryMen'); // Replace with your API endpoint
+                const response = await axiosSecure.get('http://localhost:5000/deliveryMen'); // Replace with your API endpoint
                 setDeliveryMen(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);

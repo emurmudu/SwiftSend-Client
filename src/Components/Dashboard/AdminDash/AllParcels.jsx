@@ -87,7 +87,7 @@ const AllParcels = () => {
     useEffect(() => {
         const fetchDeliveryMen = async () => {
             try {
-                const res = await axiosSecure.get("http://localhost:5001/deliveryMen");
+                const res = await axiosSecure.get("http://localhost:5000/deliveryMen");
                 setDeliveryMen(res.data);
             } catch (error) {
                 console.error("Error fetching delivery men:", error);

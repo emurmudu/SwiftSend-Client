@@ -59,7 +59,7 @@ const ParcelBooking = () => {
 
         console.log(addedParcels)
 
-        fetch('http://localhost:5001/bookedParcels', {
+        fetch('http://localhost:5000/bookedParcels', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
