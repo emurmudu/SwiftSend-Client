@@ -59,7 +59,7 @@ const ParcelBooking = () => {
 
         console.log(addedParcels)
 
-        fetch('https://assignment-12-server-c6usoj9ec-elias-murmus-projects.vercel.app/bookedParcels', {
+        fetch('http://localhost:5001/bookedParcels', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

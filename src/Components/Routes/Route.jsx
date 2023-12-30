@@ -94,7 +94,7 @@ const router = createBrowserRouter([
             {
                 path: 'updateBooking/:id',
                 element: <UpdateBooking></UpdateBooking>,
-                loader: ({ params }) => fetch(`https://assignment-12-server-c6usoj9ec-elias-murmus-projects.vercel.app/updateBooking/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5001/updateBooking/${params.id}`)
             },
 
 

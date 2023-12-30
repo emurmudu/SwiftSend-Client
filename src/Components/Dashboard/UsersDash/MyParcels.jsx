@@ -49,6 +49,7 @@ const MyParcels = () => {
         <div>
             <div className=" flex justify-evenly mb-6">
                 <h1 className="text-3xl">My Parcels Information </h1>
+                <h1>Total Parcels: {parcels.length}</h1>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
@@ -97,9 +98,15 @@ const MyParcels = () => {
                                     </button>}
                                 </th>
                                 <th>
-                                    {<button onClick={() => handleManage(parcel)} className="btn hover:bg-orange-600 bg-orange-400 btn-sm">
-                                        Pay
-                                    </button>}
+                                    {
+                                        parcels.length ? <Link to='/dashboard/checkout'>
+                                            {<button className="btn hover:bg-orange-600 bg-orange-400 btn-sm">
+                                                Pay
+                                            </button>}
+                                        </Link> : <button className="btn hover:bg-orange-600 bg-orange-400 btn-sm"></button>
+
+                                    }
+
                                 </th>
                             </tr>)
                         }

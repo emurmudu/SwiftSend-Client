@@ -20,12 +20,12 @@ const AppUsage = () => {
     }, []);
 
     useEffect(() => {
-        fetch('https://assignment-12-server-c6usoj9ec-elias-murmus-projects.vercel.app/users')
+        fetch('http://localhost:5001/users')
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [])
     useEffect(() => {
-        fetch('https://assignment-12-server-c6usoj9ec-elias-murmus-projects.vercel.app/bookedParcels')
+        fetch('http://localhost:5001/bookedParcels')
             .then(res => res.json())
             .then(data => setBookings(data))
     }, [])

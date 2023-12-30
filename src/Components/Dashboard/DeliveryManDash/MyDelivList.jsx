@@ -10,7 +10,7 @@ const MyDelivList = () => {
         const fetchParcels = async () => {
             try {
                 if (user) {
-                    const response = await axios.get(`https://assignment-12-server-c6usoj9ec-elias-murmus-projects.vercel.app/api/bookedParcels?deliveryMenId=${user._id}`);
+                    const response = await axios.get(`http://localhost:5001/api/bookedParcels?deliveryMenId=${user._id}`);
                     setParcels(response.data);
                 }
             } catch (error) {

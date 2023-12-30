@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: 'https://assignment-12-server-c6usoj9ec-elias-murmus-projects.vercel.app'
+    baseURL: 'http://localhost:5001'
     // timeout: 1000,
     // headers: {'X-Custom-Header': 'foobar'}
 });
