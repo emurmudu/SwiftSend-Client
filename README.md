@@ -1,7 +1,5 @@
 # SwiftSend #
-Live website link :https://assignment-12-client-f25b1.web.app
-
-* Assignment Category: assignment12_category_0015
+Live website link :https://swiftsend-35aff.web.app
 
 * Project Name: Parcel Management App- An online parcel delivery platform
 
