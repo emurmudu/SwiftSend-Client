@@ -59,7 +59,7 @@ const ParcelBooking = () => {
 
         console.log(addedParcels)
 
-        fetch('http://localhost:5000/bookedParcels', {
+        fetch('https://swiftsend-server.vercel.app/bookedParcels', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

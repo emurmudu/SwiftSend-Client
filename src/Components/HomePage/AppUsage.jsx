@@ -20,12 +20,12 @@ const AppUsage = () => {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://swiftsend-server.vercel.app/users')
             .then(res => res.json())
             .then(data => setUsers(data))
     }, [])
     useEffect(() => {
-        fetch('http://localhost:5000/bookedParcels')
+        fetch('https://swiftsend-server.vercel.app/bookedParcels')
             .then(res => res.json())
             .then(data => setBookings(data))
     }, [])
